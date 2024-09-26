@@ -1,9 +1,18 @@
-<script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
+    <div class="new-component">
+      <!-- Your component template goes here -->
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name: "NewComponent",
+    props: {
+      // Define your props here
+    },
+  };
+  </script>
+  
+  <style scoped>
+  /* Your component styles go here */
+  </style>
