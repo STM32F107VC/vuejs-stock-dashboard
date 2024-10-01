@@ -1,8 +1,8 @@
 <template>
     <div class="card">
         <card>
-            <h1>Hello</h1>
-            <p>Hier steht dein Kontostand</p>
+            Apple
+
         </card>
     </div>
 </template>
@@ -16,5 +16,7 @@
     background-color: #011F35;
     border-radius: 16px;
     padding: 20px 32px;
+    height: 200px;
+    width: 200px;
 }
 </style>
