@@ -18,5 +18,7 @@
     padding: 20px 32px;
     height: 200px;
     width: 200px;
+    color: white;
+    /** Testing color */
 }
 </style>
