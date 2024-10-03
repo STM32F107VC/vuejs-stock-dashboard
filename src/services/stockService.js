@@ -20,5 +20,3 @@ class StockService {
 }
 
 export const stockService = new StockService();
-
-

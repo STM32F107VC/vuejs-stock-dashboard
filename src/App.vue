@@ -1,36 +1,63 @@
 <script>
 import BaseCard from './components/BaseCard.vue';
 import { stockService } from '@/services/stockService';
+import HeadLine from './components/HeadLine.vue';
 // import { RouterLink, RouterView } from 'vue-router'
 
 /**Apple, Amazon, Google (Alphabet), Meta, Microsoft, Nvidia, Tesla */
-companies = [
-  '$AAPL',
-  '$AMZN',
-  '$GOOG',
-  '$META',
-  '$MSFT',
-  '$NVDA',
-  '$TSLA',
-];
 
 export default {
   name: 'App',
   components: {
-    BaseCard
+    BaseCard,
+    HeadLine
   },
+
   methods: {
     getSheet() {
-      // for (let i = 0; i < array.length; i++) {
-      //   const element = array[i];
-
-      // }
-
-    },
+      for (let i = 0; i < this.companies.length; i++) {
+        // const company = this.companies[i];
+      }
+    }
   },
+
+  data() {
+    return {
+      companies: [
+        { name: 'Apple', imgPath: '../src/assets/img/apple_icon.png' },
+        { name: 'Meta', imgPath: '../src/assets/img/meta_icon.png' },
+        { name: 'Microsoft', imgPath: '../src/assets/img/microsoft_icon.png' },
+        { name: 'Google', imgPath: '../src/assets/img/google_icon.png' },
+        { name: 'Amazon', imgPath: '../src/assets/img/amazon_icon.png' },
+        { name: 'Tesla', imgPath: '../src/assets/img/tesla_icon.png' },
+        { name: 'Nvidia', imgPath: '../src/assets/img/nvidia_icon.png' },
+      ],
+
+      // companyNames: [
+      //   'Apple',
+      //   'Meta',
+      //   'Microsoft',
+      //   'Google',
+      //   'Amazon',
+      //   'Tesla',
+      //   'Nvidia',
+      // ],
+
+      companySheet: [
+        '$AAPL',
+        '$AMZN',
+        '$GOOG',
+        '$META',
+        '$MSFT',
+        '$NVDA',
+        '$TSLA',
+      ]
+    }
+  },
+
   async created() {
-    this.data = await stockService.getRevenue(this.getSheet());
-    console.log('Loaded data', this.data);
+    this.data = await stockService.getRevenue('$AAPL');
+    // console.log('Loaded data', this.data);
   }
 }
 
@@ -38,15 +65,11 @@ export default {
 
 
 <template>
+  <HeadLine />
 
-  <header>
-    <img src="/src/assets/img/blue_rectangle.png" alt="blue rectangle">
-    <h1 style="color: white;">The Magnificent Seven Companies</h1>
-  </header>
-
+  <!-- Loop über die Firmen -->
   <div class="main-content">
-    <BaseCard />
-
+    <BaseCard v-for="(company, index) in companies" :key="index" :company="company" />
   </div>
 
 
@@ -54,23 +77,23 @@ export default {
 </template>
 
 <style>
+.head-line {
+  height: 200px;
+  color: white;
+}
+
 template {
   display: flex;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin: 64px 0 32px 0;
-}
-
-header>img {
-  height: 32px;
-}
-
 .main-content {
-  padding-left: 100px;
-  padding-right: 100px;
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  margin: 0 24px;
+  border-radius: 20px;
+  background-color: #023A6233;
+  box-sizing: content-box;
+  width: 100%;
 }
 </style>
